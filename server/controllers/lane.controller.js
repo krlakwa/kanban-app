@@ -18,3 +18,12 @@ export function addLane(req, res) {
     res.json(saved);
   });
 }
+
+export function getLanes(req, res) {
+  Lane.find().exec((err, lanes) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ lanes });
+  });
+}
