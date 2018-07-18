@@ -14,7 +14,7 @@ export function addNote(req, res) {
     task: note.task,
   });
 
-  newNote.id = uuid;
+  newNote.id = uuid();
 
   newNote.save((err, saved) => {
     if (err) {
