@@ -11,5 +11,9 @@ router.route('/lanes').get(LaneController.getLanes);
 
 router.route('/lanes').post(LaneController.addLane);
 
+// Delete a line by laneId
+
+router.route('/lanes/:laneId').delete(LaneController.deleteLane);
+
 
 export default router;
