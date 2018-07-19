@@ -13,7 +13,7 @@ export function createLane(lane) {
       id: uuid(),
       notes: [],
       ...lane,
-    }
+    },
   };
 }
 
