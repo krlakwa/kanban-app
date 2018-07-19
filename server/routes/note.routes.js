@@ -7,4 +7,8 @@ const router = new Router();
 
 router.route('/notes').post(NoteController.addNote);
 
+// Delete a single note
+
+router.route('/notes/:noteId').delete(NoteController.deleteNote);
+
 export default router;
