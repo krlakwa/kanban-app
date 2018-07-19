@@ -1,5 +1,7 @@
-import Lane from '../models/lane';
 import uuid from 'uuid';
+
+import Lane from '../models/lane';
+import Note from '../models/note';
 
 export function addLane(req, res) {
   if (!req.body.name) {
@@ -34,8 +36,30 @@ export function deleteLane(req, res) {
       res.status(500).send(err);
     }
 
-    lane.remove(() => {
-      res.status(200).end();
+    const noteIds = lane.notes.map(note => note.id);
+    Note.remove({ id: { $in: noteIds } }).exec(err => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      lane.remove(() => {
+        res.status(200).end();
+      });
+    });
+  });
+}
+
+export function editName(req, res) {
+  Lane.findOne({ id: req.params.laneId }).exec((err, lane) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    lane.name = req.body.name;
+    lane.save((err, laneSaved) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json(laneSaved);
     });
   });
 }
