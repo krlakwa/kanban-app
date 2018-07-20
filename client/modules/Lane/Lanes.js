@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Lane from './Lane';
+import Lane from './LaneContainer.js';
 
 const Lanes = ({ lanes }) => {
   return (
