@@ -37,6 +37,6 @@ export function deleteNote(noteId, laneId) {
 export function editNote(noteId) {
   return {
     type: EDIT_NOTE,
-    id: noteId,
+    noteId,
   };
 }
