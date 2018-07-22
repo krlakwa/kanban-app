@@ -38,8 +38,8 @@ export function updateLane(lane) {
 
 export function updateLaneRequest(lane) {
   return (dispatch) => {
-    return callApi('lanes', 'put', { id: lane.id, name: lane.name }).then(res => {
-      dispatch(updateLane(res));
+    return callApi('lanes', 'put', { id: lane.id, name: lane.name }).then(laneResp => {
+      dispatch(updateLane(laneResp));
     });
   };
 }
