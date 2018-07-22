@@ -22,7 +22,7 @@ export default class Edit extends Component {
 
     return (
       <div>
-        <span clasName={styles.value} onClick={onValueClick}>{value}</span>
+        <span className={styles.value} onClick={onValueClick}>{value}</span>
         {onDelete ? this.renderDelete() : null}
       </div>
     );
