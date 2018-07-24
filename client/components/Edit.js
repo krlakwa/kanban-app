@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Edit.css';
 
 export default class Edit extends Component {
   checkEnter = (e) => {
@@ -23,7 +22,7 @@ export default class Edit extends Component {
 
     return (
       <div>
-        <span className={styles.value} onClick={onValueClick}>{value}</span>
+        <span onClick={onValueClick}>{value}</span>
         {onDelete ? this.renderDelete() : null}
       </div>
     );
