@@ -1,19 +1,8 @@
 .Lane {
-
-}
-
-.LaneHeader {
-
-}
-
-.LaneAddNote {
-
-}
-
-.LaneName {
-
-}
-
-.LaneDelete {
-    
+  padding: 10px;
+  background-color: #ddd;
+  width: 290px;
+  min-height: 300px;
+  border: 1px black solid;
+  margin: 10px;
 }
