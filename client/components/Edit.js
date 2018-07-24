@@ -15,7 +15,7 @@ export default class Edit extends Component {
     }
   }
   renderDelete = () => {
-    return <button className={styles.delete} onClick={this.props.onDelete}>x</button>;
+    return <button onClick={this.props.onDelete}>x</button>;
   }
   renderValue = () => {
     const { value, onDelete, onValueClick } = this.props;
