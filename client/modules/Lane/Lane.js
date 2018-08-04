@@ -1,30 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import NotesContainer from '../Note/NotesContainer';
+import Edit from '../../components/Edit';
 
 // Import Style
 import styles from './Lane.css';
 
-class Lane extends Component {
+class Lane extends React.Component {
   render() {
-    return (
+    const { connectDropTarget, lane, laneNotes, updateLane, addNote, deleteLane, editLane } = this.props;
+    const laneId = lane.id;
+
+    return connectDropTarget(
+      <div className={styles.Lane}>
+        <div className={styles.LaneHeader}>
+          <Edit
+            className={styles.LaneName}
+            editing={lane.editing}
+            value={lane.name}
+            onValueClick={() => editLane(lane.id)}
+            onUpdate={name => updateLane({ ...lane, name, editing: false })}
+          />
+          <div className={styles.LaneAddNote}>
+            <button onClick={() => addNote({ task: 'New Note' }, laneId)}>Add Note</button>
+          </div>
+          <div className={styles.LaneDelete}>
+            <button onClick={() => deleteLane(lane)}>Remove lane</button>
+          </div>
+        </div>
+        <NotesContainer
+          notes={laneNotes}
+          laneId={laneId}
+        />
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
 Lane.propTypes = {
+  lane: PropTypes.object,
+  laneNotes: PropTypes.array,
+  addNote: PropTypes.func,
+  updateLane: PropTypes.func,
+  deleteLane: PropTypes.func,
+  editLane: PropTypes.func,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Lane);
+export default Lane;
